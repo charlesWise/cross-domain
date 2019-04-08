@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <h2>target.html,以下是接收到的消息：</h2>
+    <section id="msg">
+
+    </section>
+  </div>
+  <script>
+    window.onload = function () {
+      if (window.addEventListener) {
+        window.addEventListener("message", handleMessage, false);
+      }
+      else {
+        window.attachEvent("onmessage", handleMessage);
+      }
+
+      function handleMessage(event) {
+        event = event || window.event;
+        if (event.origin === 'http://source.com') {
+          document.getElementById('msg').innerHTML = event.data;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <iframe id="iframe" src="http://target.com/target.html"></iframe>
+  <input id="msg" type="text" placeholder="请输入要发送的消息">
+  <button id="send">发送</button>
+  <script>
+    window.onload = function () {
+      document.getElementById('send').onclick = function () {
+        var msg = document.getElementById('msg').value;
+        var iframeWindow = document.getElementById('iframe').contentWindow;
+        iframeWindow.postMessage(msg, "http://localhost/b.html");
+      }
+    }
+  </script>
+</body>
+
+</html>

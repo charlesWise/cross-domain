@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var boo = false;
+    var iframe = document.createElement('iframe');
+    var loadData = function () {
+      if (boo) {
+        var data = iframe.contentWindow.name;    //获取window.name
+        console.log(data);
+        //销毁数据   
+        iframe.contentWindow.document.write('');
+        iframe.contentWindow.close();
+        document.body.removeChild(iframe);
+      } else {
+        boo = true;
+        iframe.contentWindow.location = "b.html";    // 设置的代理文件,iframe重新载入
+      }
+    };
+    iframe.src = 'https://xxx.github.io/xxx';
+    if (iframe.attachEvent) {
+      iframe.attachEvent('onload', loadData);
+    } else {
+      iframe.onload = loadData;
+    }
+    document.body.appendChild(iframe);
+  </script>
+</body>
+
+</html>

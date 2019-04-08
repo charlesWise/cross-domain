@@ -16,6 +16,7 @@ DOM元素也有同源策略 iframe
 - postMessage
   两个页面之间的访问
 - document.domian
+  一级域名和二级域名的关系
 - window.name
 - location.hash
 - http-proxy
